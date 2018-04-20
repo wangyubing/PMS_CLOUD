@@ -1,0 +1,23 @@
+#spring:
+#  application:
+#    name: eureka-service
+#
+#server:
+#  port: 8761
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#    lease-renewal-interval-in-seconds: 5
+#    lease-expiration-duration-in-seconds: 5
+##    ipAddress: 192.168.1.1
+##    preferIpAddress: true
+#  client:
+#    registerWithEureka: false #是否将eureka自身作为应用注册到eureka注册中心
+#    fetchRegistry: false #为true时，可以启动，但报异常：Cannot execute request on any known server
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+spring:
+  profiles: peer2

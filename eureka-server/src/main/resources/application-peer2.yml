@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eureka-service
+
+server:
+  port: 8760
+
+eureka:
+  instance:
+    hostname: peer2
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 5
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://peer1:8761/eureka/
