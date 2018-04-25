@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <!-- 要是需要管理日志级别，需要在文件中加入 此配置 -->
+    <jmxConfigurator/>
+</configuration>

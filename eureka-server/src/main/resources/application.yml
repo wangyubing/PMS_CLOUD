@@ -1,23 +1,23 @@
-#spring:
-#  application:
-#    name: eureka-service
-#
-#server:
-#  port: 8761
-#
-#eureka:
-#  instance:
-#    hostname: localhost
-#    lease-renewal-interval-in-seconds: 5
-#    lease-expiration-duration-in-seconds: 5
-##    ipAddress: 192.168.1.1
-##    preferIpAddress: true
-#  client:
-#    registerWithEureka: false #ÊÇ·ñ½«eureka×ÔÉí×÷ÎªÓ¦ÓÃ×¢²áµ½eureka×¢²áÖÐÐÄ
-#    fetchRegistry: false #ÎªtrueÊ±£¬¿ÉÒÔÆô¶¯£¬µ«±¨Òì³££ºCannot execute request on any known server
-#    serviceUrl:
-#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
-
 spring:
-  profiles: peer2
+  application:
+    name: eureka-service
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 5
+#    ipAddress: 192.168.1.1
+#    preferIpAddress: true
+  client:
+    registerWithEureka: false #ï¿½Ç·ï¿½eurekaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÓ¦ï¿½ï¿½×¢ï¿½áµ½eureka×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    fetchRegistry: false #ÎªtrueÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½Cannot execute request on any known server
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+#spring:
+#  profiles: peer2

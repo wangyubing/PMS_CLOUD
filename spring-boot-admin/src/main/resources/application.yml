@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: zgz-spring-boot-admin
+info:
+  version: @project.version@
+
+# tag::configuration-eureka[]
+eureka:   #<1>
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    hostname: localhost
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #<2>
+# end::configuration-eureka[]
+  endpoint:
+    health:
+      show-details: ALWAYS
+  security:
+    enabled: false
+
+endpoints:
+   logfile:
+      sensitive: false
