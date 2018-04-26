@@ -24,7 +24,8 @@ public class TestController {
     @ResponseBody
     @RequestMapping("/url")
     public String testUrl(@RequestParam Map<String, String> params) {
+        String name = params.get("name");
         System.out.println(request.getRequestURL());
-        return "=======> hi i am from port:" + port;
+        return "=======> hi i am from port:" + port + "  name: " + name;
     }
 }

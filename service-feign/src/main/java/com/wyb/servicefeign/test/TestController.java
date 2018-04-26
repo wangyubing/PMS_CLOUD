@@ -12,8 +12,11 @@ public class TestController {
     @Autowired
     SchedualServiceHi schedualServiceHi;
 
+    @Autowired
+    ConfigService configService;
+
     @RequestMapping(value = "/hi")
     public String hi(@RequestParam String name){
-        return schedualServiceHi.sayHiFromClientOne(name);
+        return schedualServiceHi.sayHiFromClientOne(name) + "    config service:" + configService.getConfig();
     }
 }
