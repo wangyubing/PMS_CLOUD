@@ -26,7 +26,7 @@
         <module name="config-server" />
         <module name="eureka-client" />
         <module name="eureka-server" />
-        <module name="pmscloud" />
+        <module name="service-common" />
         <module name="service-feign" />
         <module name="service-ribbon" />
         <module name="service-zuul" />
@@ -40,7 +40,8 @@
       <module name="eureka-client (1)" target="1.8" />
       <module name="eureka-client-c1" target="1.8" />
       <module name="eureka-server" target="1.8" />
-      <module name="pmscloud" target="1.5" />
+      <module name="pmscloud" target="1.8" />
+      <module name="service-common" target="1.8" />
       <module name="service-feign" target="1.8" />
       <module name="service-ribbon" target="1.8" />
       <module name="service-zuul" target="1.8" />
