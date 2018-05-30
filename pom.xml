@@ -65,6 +65,8 @@
         <module>service-zuul</module>
         <module>config-server</module>
         <module>spring-boot-admin</module>
+
+        <module>pms-system</module>
     </modules>
 
     <dependencyManagement>
