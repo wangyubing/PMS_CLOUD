@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wyb.pms.dao.master.SysUserDao">
+
+
+    <sql id="Base_Column_List">
+        user_id, user_name, user_state, user_mobile
+    </sql>
+
+    <select id="queryUserList" resultType="map" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from sys_user
+    </select>
+
+    <select id="queryUser" resultType="map">
+        SELECT * FROM sys_user WHERE user_mobile=#{user_name} OR user_name=#{user_name}
+    </select>
+    
+    <select id="queryAllAuthority" resultType="map">
+        SELECT
+          t.menu_id, t.menu_name, t.menu_url, t.menu_key, t.menu_remark
+        FROM sys_menu t WHERE  t.is_del='N' AND t.is_private='1' AND t.is_hide='N'
+    </select>
+
+    <insert id="addUser">
+        INSERT INTO sys_user(user_id,user_name,user_mobile,user_pwd,user_state)
+        VALUES (uuid(), #{user_name},#{user_mobile},#{user_pwd},'1')
+    </insert>
+</mapper>

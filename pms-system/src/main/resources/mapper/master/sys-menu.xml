@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wyb.pms.dao.master.SysMenuDao">
+
+    <select id="queryAllAuthority" resultType="map">
+        SELECT
+          t.menu_id, t.menu_name, t.menu_url, t.menu_key, t.menu_remark
+        FROM sys_menu t WHERE  t.is_del='N' AND t.is_private='1' AND t.is_hide='N'
+    </select>
+
+</mapper>

@@ -1,0 +1,30 @@
+# 应用名称
+spring.application.name: pms-system
+# 应用描述
+info.app-desc: 安全认证应用
+
+# 启用哪个配置文件
+spring.profiles.active: dev
+
+# 端口号
+server.port: 8088
+
+# redis
+spring:
+  redis:
+    host: 127.0.0.1
+    #password: redispassword
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1
+
+# rabbit
+mq.rabbit:
+  host: 127.0.0.1
+  port: 5672
+  virtualHost: /
+  username: guest
+  password: guest

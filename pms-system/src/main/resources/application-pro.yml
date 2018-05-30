@@ -1,0 +1,41 @@
+# 应用访问端口
+server.port: 8088
+
+# 配置数据库参数
+datasource:
+  master:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/pms?useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true
+      username: root
+      password: root
+      max-active: 10
+      initial-size: 5
+      max-idle: 5
+      min-idle: 1
+      test-while-idle: true
+      test-on-borrow: true
+      validation-query: SELECT 1
+      time-between-eviction-runs-millis: 5000
+      min-evictable-idle-time-millis: 60000
+  cluster:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1/pms?useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true
+      username: root
+      password: root
+      max-active: 10
+      initial-size: 5
+      max-idle: 5
+      min-idle: 1
+      test-while-idle: true
+      test-on-borrow: true
+      validation-query: SELECT 1
+      time-between-eviction-runs-millis: 5000
+      min-evictable-idle-time-millis: 60000
+
+# 配置系统日志打印
+logging:
+  pattern:
+    console: "%date{HH:mm:ss.SSS} %-5level %-30.30logger{29} : %msg%n"
+  level:
+    root: INFO
+    com.wyb.PMS: DEBUG

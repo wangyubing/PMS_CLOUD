@@ -1,0 +1,115 @@
+
+# 应用访问端口
+server.port: 8088
+
+# 配置数据库参数
+datasource:
+  master:
+    uniqueResourceName: masterdatasource
+    xaDataSourceClassName: com.alibaba.druid.pool.xa.DruidXADataSource
+    maxPoolSize: 20
+    minPoolSize: 5
+    # 连接最大存活时间，超过这个且没有正在使用的连接将自动销毁,0无限制，1000 =1000s,对于一些会自动中断连接的数据库如mysql，
+    # 可以设置这个参数，在达到这个时间的时候会自动关闭连接，下次数据库调用的时候就会新建
+    maxLifetime: 20000
+    # 获取连接失败重新获等待最大时间，在这个时间内如果有可用连接，将返回
+    borrowConnectionTimeout: 30
+    # java数据库连接池，最大可等待获取datasouce的时间
+    loginTimeout: 30
+    # 连接回收时间
+    maintenanceInterval: 60
+    # 最大闲置时间，超过最小连接池连接的连接将将关闭
+    maxIdleTime: 60
+    # 最大获取数据时间，如果不设置这个值，Atomikos使用默认的5分钟，那么在处理大批量数据读取的时候，一旦超过5分钟，就会抛出类似 Resultset is close 的错误.
+    reapTimeout: 5
+    testQuery: select 1
+    xaProperties:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/pms_system?useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true
+      username: root
+      password: root
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000 # 配置获取连接等待使劲
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      validationQuery: SELECT 1
+      minEvictableIdleTimeMillis: 300000 # 配置一个连接池在池中的最小生存时间，单位毫秒
+      timeBetweenEvictionRunsMillis: 60000 # 配置多久才进行一次检测，检测需要关闭的空连接，单位毫秒
+      #removeAbandoned: true # 移除被遗弃的连接
+      #removeAbandonedTimeout: 300 # 设置超时时间单位（秒） Millis
+      #logAbandoned: true
+      # 打开PSCache, 并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      # 配置监控统计拦截的filters, 去掉后监控界面sql将无法统计，‘wall'用户防火墙
+      filters: stat,wall,log4j
+      # 通过connectProperties属性来打开mergeSql功能，慢sql记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # 合并多个DruidDataSource的监控数据
+      #userGlobalDataSourceStat: true
+
+  cluster:
+    # 资源标识
+    uniqueResourceName: clusterdatasource
+    # 数据源类名
+    xaDataSourceClassName: com.alibaba.druid.pool.xa.DruidXADataSource
+    maxPoolSize: 20
+    minPoolSize: 5
+    maxLifetime: 20000
+    borrowConnectionTimeout: 30
+    loginTimeout: 30
+    maintenanceInterval: 60
+    maxIdleTime: 60
+    reapTimeout: 5
+    #testQuery: select 1
+    # 数据源配置
+    xaProperties:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true
+      username: root
+      password: root
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000 # 配置获取连接等待使劲
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      validationQuery: SELECT 1
+      minEvictableIdleTimeMillis: 300000 # 配置一个连接池在池中的最小生存时间，单位毫秒
+      timeBetweenEvictionRunsMillis: 60000 # 配置多久才进行一次检测，检测需要关闭的空连接，单位毫秒
+      #removeAbandoned: true # 移除被遗弃的连接
+      #removeAbandonedTimeout: 300 # 设置超时时间单位（秒） Millis
+      #logAbandoned: true
+      # 打开PSCache, 并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      # 配置监控统计拦截的filters, 去掉后监控界面sql将无法统计，‘wall'用户防火墙
+      filters: stat,wall,log4j
+      # 通过connectProperties属性来打开mergeSql功能，慢sql记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # 合并多个DruidDataSource的监控数据
+      #userGlobalDataSourceStat: true
+
+
+# 配置系统日志打印
+logging:
+  pattern:
+    console: "%date{HH:mm:ss.SSS} %-5level %-30.30logger{29} : %msg%n"
+  level:
+    root: INFO
+    com.wyb.PMS: DEBUG
+
+# jwt setting
+wyb.security.jwt:
+  tokenExpirationTime: 15 # Number of minutes
+  refreshTokenExpTime: 60 # Minutes
+  tokenIssuer: http://wyb.com
+  tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+  tokenAuthoritySaveType: DATABASE # REDIS 从redis服务器中获取权限，TOKEN 从token中获取权限， DATABASE 从数据库中获取权限
+
+mybatis:
+  configuration.callSettersOnNulls: true
