@@ -1,0 +1,21 @@
+
+# 同做uri访问配置服务地址
+#spring.application.name: config-server
+#spring.cloud.config.uri: http://localhost:8766/
+#spring.cloud.config.label: master
+#spring.cloud.config.profile: pro
+
+# 通过注册管理
+#spring.cloud.config.uri: http://localhost:8766/
+spring.cloud.config.label: master  # git 分支
+spring.cloud.config.profile: pro   # git 文件名的profile
+spring.cloud.config.discovery.enabled: true
+spring.cloud.config.discovery.serviceId: config-server #访问配置服务地址
+management.security.enabled: false
+spring.cloud.bus.trace.enabled: true
+
+# 配置rabbitmp
+spring.rabbitmq.host: localhost
+spring.rabbitmq.port: 5672
+spring.rabbitmq.username: guest
+spring.rabbitmq.password: guest
